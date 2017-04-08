@@ -1,0 +1,1437 @@
+From: <Saved by Blink>
+Subject: The XMLHttpRequest Object
+Date: Tue, 3 Apr 2017 19:34:19 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----"
+
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----
+Content-Type: text/html
+Content-ID: <frame-136-887d99a6-6333-499f-948b-2122b4c1ed65@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd"><!--
+          ******* WARNING ********
+          This document was automatically generated using the Re-Spec speci=
+fication
+          publishing system. Edits made here are likely to be lost when it =
+is
+          regenerated.
+          ******* WARNING ********
+        --><html xmlns=3D"http://www.w3.org/1999/xhtml" xml:lang=3D"en-US" =
+lang=3D"en-US"><head><meta http-equiv=3D"Content-Type" content=3D"text/html=
+; charset=3DUTF-8">
+ =20
+
+  <title>The XMLHttpRequest Object</title>
+  <link rel=3D"stylesheet" href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReq=
+uest-20060405/respec-w3c.css" type=3D"text/css">
+  <link rel=3D"stylesheet" href=3D"http://www.w3.org/StyleSheets/TR/W3C-WD"=
+ type=3D"text/css">
+  <meta name=3D"revision" content=3D"$Id: index.html,v 1.5 2006/04/05 17:02=
+:33 dean Exp $">
+  </head>
+
+<body>
+  <div class=3D"head">
+      <a href=3D"http://www.w3.org/"><img height=3D"48" width=3D"72" alt=3D=
+"W3C" src=3D"http://www.w3.org/Icons/w3c_home"></a>
+
+    <h1 class=3D"head">The XMLHttpRequest Object</h1>
+
+    <h2 id=3D"pagesubtitle">W3C Working Draft <em>05 April
+    2006</em></h2>
+
+    <dl>
+      <dt>This version:</dt>
+
+      <dd><a href=3D"http://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/"=
+>http://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/</a></dd>
+
+      <dt>Latest version:</dt>
+
+      <dd><a href=3D"http://www.w3.org/TR/XMLHttpRequest">http://www.w3.org=
+/TR/XMLHttpRequest</a></dd>
+
+
+      <dt>Editors:</dt>
+
+      <dd><span class=3D"person"><a href=3D"http://annevankesteren.nl/">Ann=
+e van Kesteren</a> (<a href=3D"http://www.opera.com/">Opera Software ASA</a=
+>) &lt;<a href=3D"mailto:annevk@opera.com">annevk@opera.com</a>&gt;</span><=
+/dd>
+
+      <dd><span class=3D"person"><a href=3D"http://www.w3.org/People/Dean/"=
+>Dean Jackson</a> (<a href=3D"http://www.w3.org/">W3C</a>) &lt;<a href=3D"m=
+ailto:dino@w3.org">dino@w3.org</a>&gt;</span></dd>
+    </dl>
+
+    <p class=3D"copyright"><a href=3D"http://www.w3.org/Consortium/Legal/ip=
+r-notice#Copyright">Copyright</a>
+    =C2=A92006 <a href=3D"http://www.w3.org/"><acronym title=3D"World Wide =
+Web Consortium">W3C</acronym></a><sup>=C2=AE</sup>
+    (<a href=3D"http://www.csail.mit.edu/"><acronym title=3D"Massachusetts =
+Institute of Technology">MIT</acronym></a>,
+    <a href=3D"http://www.ercim.org/"><acronym title=3D"European Research C=
+onsortium for Informatics and Mathematics">ERCIM</acronym></a>,
+    <a href=3D"http://www.keio.ac.jp/">Keio</a>), All Rights
+    Reserved. W3C <a href=3D"http://www.w3.org/Consortium/Legal/ipr-notice#=
+Legal_Disclaimer">
+    liability</a>, <a href=3D"http://www.w3.org/Consortium/Legal/ipr-notice=
+#W3C_Trademarks">trademark</a>
+    and <a href=3D"http://www.w3.org/Consortium/Legal/copyright-documents">=
+document
+    use</a> rules apply.</p>
+  </div>
+  <hr>
+
+  <h2 id=3D"specabstract">Abstract</h2>
+
+  <div class=3D"section">
+    <p>This specification defines the <code>XMLHttpRequest</code>
+    object, an API that provides some HTTP client
+    functionality.</p>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"sotd">Status of this Document</h2>
+
+    <p><em>This section describes the status of this document at
+    the time of its publication. Other documents may supersede this
+    document. A list of current <acronym title=3D"World Wide Web Consortium=
+">W3C</acronym> publications and the
+    latest revision of this technical report can be found in the
+    <a href=3D"http://www.w3.org/TR/"><acronym title=3D"World Wide Web Cons=
+ortium">W3C</acronym> technical reports
+    index</a> at http://www.w3.org/TR/.</em></p>
+
+    <p>This is the 05 April 2006 Working Draft of the XMLHttpRequest Object=
+, the first publication of this specification. This document is produced by=
+ the <a href=3D"http://www.w3.org/2006/webapi">Web API <acronym title=3D"Wo=
+rking Group">WG</acronym></a>, part of the <a href=3D"http://www.w3.org/200=
+6/rwc/Activity">Rich Web Clients
+    Activity</a> in the <acronym title=3D"World Wide Web Consortium">W3C</a=
+cronym> <a href=3D"http://www.w3.org/Interaction/">Interaction Domain</a>.
+    The <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/#a=
+uthors">authors of this document</a> are the members of the
+    <acronym title=3D"World Wide Web Consortium">W3C</acronym>
+    <a href=3D"http://www.w3.org/2006/webapi">Web API Working
+    Group</a>.</p>
+
+    <p>Web content and browser developers are encouraged to review
+    this draft. Please send comments to <a href=3D"mailto:public-webapi@w3.=
+org">public-webapi@w3.org</a>, the
+    <acronym title=3D"World Wide Web Consortium">W3C</acronym>'s
+    public email list for issues related to Web APIs. <a href=3D"http://lis=
+ts.w3.org/Archives/Public/public-webapi/">Archives</a>
+    of the list are available.</p>
+
+<p> This document was produced by a group operating under the <a href=3D"ht=
+tp://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Pat=
+ent Policy</a>. This document is informative only. W3C maintains a <a rel=
+=3D"disclosure" href=3D"http://www.w3.org/2004/01/pp-impl/38482/status">pub=
+lic list of any patent disclosures</a> made in connection with the delivera=
+bles of the group; that page also includes instructions for disclosing a pa=
+tent. An individual who has actual knowledge of a patent which the individu=
+al believes contains <a href=3D"http://www.w3.org/Consortium/Patent-Policy-=
+20040205/#def-essential">Essential Claim(s)</a> must disclose the informati=
+on in accordance with <a href=3D"http://www.w3.org/Consortium/Patent-Policy=
+-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>. </p>
+
+    <p>Publication as a Working Draft does not imply endorsement by
+    the <acronym title=3D"World Wide Web Consortium">W3C</acronym>
+    Membership. This is a draft document and may be updated,
+    replaced or obsoleted by other documents at any time. It is
+    inappropriate to cite this document as other than work in
+    progress.</p>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"contents">Table of Contents</h2>
+
+    <ul class=3D"toc">
+      <li><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/=
+#introduction">1. Introduction</a></li>
+
+      <li><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/=
+#conformance">2. Conformance</a></li>
+
+      <li><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/=
+#xmlhttprequest">3. The
+      <code>XMLHttpRequest</code> object</a></li>
+    </ul>
+
+    <ul class=3D"toc">
+      <li><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/=
+#bibref">A. References</a></li>
+
+      <li><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/=
+#authors">B. Authors</a></li>
+    </ul>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"introduction">1. Introduction</h2>
+
+    <p><em>This section is informative</em></p>
+
+    <p>The XMLHttpRequest object is an interface exposed by a
+    scripting engine that allows scripts to perform HTTP client
+    functionality, such as submitting form data or loading data
+    from a remove Web site.</p>
+
+    <p>The XMLHttpRequest object is implemented today, in some
+    form, by many popular Web browsers. Unfortunately the
+    implementations are not completely interoperable. The goal of
+    this specification is to document a minimum set of
+    interoperable features based on existing implementations,
+    allowing Web developers to use these features without
+    platform-specific code. In order to do this, only features that
+    are already implemented are considered. In the case where there
+    is a feature with no interoperable implementations, the authors
+    have specified what they believe to be the most correct
+    behavior.</p>
+
+    <p>Future versions of this specification (as opposed to future
+    drafts of this version) may add new features, after careful
+    examination from browser developers and Web content
+    developers.</p>
+
+    <p>This specification was originally derived from the WHAT
+    <acronym title=3D"Working Group">WG</acronym>'s Web Applications
+    1.0 document. The authors acknowledge the work of the WHAT
+    <acronym title=3D"Working Group">WG</acronym> in documenting
+    existing behavior.</p>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"conformance">2. Conformance</h2>
+
+    <p><em>This section is normative</em></p>
+
+    <p>The key words <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 con=
+text">MUST</em>, <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context=
+">MUST NOT</em>, <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context=
+">REQUIRED</em>,
+    <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">SHALL</em>,=
+ <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">SHALL NOT</em>=
+, <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">SHOULD</em>,
+    <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">SHOULD
+    NOT</em>, <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">R=
+ECOMMENDED</em>, <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context=
+">MAY</em>, and
+    <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">OPTIONAL</e=
+m> in this document
+    are to be interpreted as described in RFC 2119 [<cite><a href=3D"https:=
+//www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/#RFC2119" class=3D"bibref">=
+RFC2119</a></cite>].</p>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"xmlhttprequest">3. The <code>XMLHttpRequest</code>
+    object</h2>
+
+    <p><em>This section is normative</em></p>
+
+    <p>The following interface <em class=3D"rfc2119" title=3D"Keyword in RF=
+C 2119 context">MAY</em> be used to allow scripts
+    to programmatically connect to their originating server via
+    HTTP.</p>
+
+    <p>In ECMAScript, an instance of <code>XMLHttpRequest</code>
+    can be created using the <code>XMLHttpRequest()</code>
+    constructor:</p>
+
+    <div class=3D"boxed">
+      <div>
+        <span class=3D"exampleTitle">Example: XMLHttpRequest
+        constructor</span>
+      </div>
+      <pre class=3D"example" title=3D"XMLHttpRequest constructor">var r =3D=
+ new XMLHttpRequest();
+</pre>
+    </div>
+
+    <div class=3D"ednote">
+      What about non-ECMAScript implementations?
+    </div>
+
+    <p>A more complete description of what can be done with
+    <code>XMLHttpRequest</code> can be found in the IDL below and
+    its associated details.</p>
+
+    <div class=3D"ednote">
+      Need to define which IDL specification we are going to
+      conform to, if any.
+    </div>
+
+    <div class=3D"boxed">
+      <p><span class=3D"idlTitle">The XMLHttpRequest
+      interface</span></p>
+      <pre class=3D"schema" title=3D"The XMLHttpRequest interface">interfac=
+e XMLHttpRequest {
+
+           attribute Function        <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-onreadystatechange">onreadystatechange</a>;
+  readonly attribute unsigned short  <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a>;
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-open">open</a>(in DOMString method, in DOMString uri);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-open">open</a>(in DOMString method, in DOMString uri, in bo=
+olean async);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-open">open</a>(in DOMString method, in DOMString uri, in bo=
+olean async, in DOMString user);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-open">open</a>(in DOMString method, in DOMString uri, in bo=
+olean async, in DOMString user, in DOMString password);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-setrequestheader">setRequestHeader</a>(in DOMString header,=
+ in DOMString value)
+                                        raises(DOMException);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-send">send</a>(in DOMString data)
+                                        raises(DOMException);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-send">send</a>(in Document data)
+                                        raises(DOMException);
+  void               <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-abort">abort</a>();
+  DOMString          <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-getallresponseheaders">getAllResponseHeaders</a>();
+  DOMString          <a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpReques=
+t-20060405/#dfn-getresponseheader">getResponseHeader</a>(in DOMString heade=
+r);
+           attribute DOMString       <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-responsetext">responseText</a>;
+           attribute Document        <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-responsexml">responseXML</a>;
+           attribute unsigned short  <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-status">status</a>;
+                                        // raises(DOMException) on retrieva=
+l
+           attribute DOMString       <a href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-statustext">statusText</a>;
+                                        // raises(DOMException) on retrieva=
+l
+};
+</pre>
+    </div>
+
+    <div class=3D"section">
+      <div class=3D"section">
+        <h4 id=3D"idl-attributes" class=3D"idl-header">Attributes</h4>
+
+        <dl class=3D"idl-attr">
+          <dt id=3D"dfn-onreadystatechange">
+          <code>onreadystatechange</code> of type Function</dt>
+
+          <dd>
+            <p>An attribute that represents a function that
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be invoked when
+            <code>readyState</code> changes value. The function
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MAY=
+</em> be invoked
+            multiple times when readyState is 3 (Receiving). Its
+            initial value <em class=3D"rfc2119" title=3D"Keyword in RFC 211=
+9 context">MUST</em> be
+            <code>null</code>.</p>
+
+            <div class=3D"ednote">
+              What if languages don't have functions? Perhaps this
+              should be an EventListener?
+            </div>
+          </dd>
+
+          <dt id=3D"dfn-readystate"><code>readyState</code> of type
+          unsigned short, readonly</dt>
+
+          <dd>
+            <p>The state of the object. The attribute MUSt be one
+            of the following values:</p>
+
+            <dl>
+              <dt>0 Uninitialized</dt>
+
+              <dd>The initial value.</dd>
+
+              <dt>1 Open</dt>
+
+              <dd>The <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-open">open()</a></code> method has be=
+en
+              successfully called.</dd>
+
+              <dt>2 Sent</dt>
+
+              <dd>The UA successfully completed the request, but no
+              data has yet been received.</dd>
+
+              <dt>3 Receiving</dt>
+
+              <dd>
+                Immediately before receiving the message body (if
+                any). All HTTP headers have been received.
+
+                <div class=3D"ednote">
+                  What about HEAD requests?
+                </div>
+              </dd>
+
+              <dt>4 Loaded</dt>
+
+              <dd>The data transfer has been completed.</dd>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-responsetext"><code>responseText</code> of
+          type DOMString</dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 3 (Receiving) or 4 (Loaded), it
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be the empty
+            string. Otherwise, it <em class=3D"rfc2119" title=3D"Keyword in=
+ RFC 2119 context">MUST</em> be the the body
+            of the data received so far, interpreted using the
+            character encoding specified in the response, or UTF-8
+            if no character encoding was specified. Invalid bytes
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be converted to
+            U+FFFD REPLACEMENT CHARACTER.</p>
+          </dd>
+
+          <dt id=3D"dfn-responsexml"><code>responseXML</code> of type
+          Document</dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 4 (Loaded), it <em class=3D"rfc2119" title=3D"=
+Keyword in RFC 2119 context">MUST</em> be
+            <code>null</code>. Otherwise, if the
+            <code>Content-Type</code> header contains a media type
+            (ignoring any parameters) that is either
+            <code>text/xml</code>, <code>application/xml</code>, or
+            ends in <code>+xml</code>, it <em class=3D"rfc2119" title=3D"Ke=
+yword in RFC 2119 context">MUST</em> be an
+            object that implements the <code>Document</code>
+            interface representing the parsed document. If the
+            document was not an XML document, or if the document
+            could not be parsed (due to an XML well-formedness
+            error or unsupported character encoding, for instance),
+            it <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">=
+MUST</em> be
+            <code>null</code>.</p>
+          </dd>
+
+          <dt id=3D"dfn-status"><code>status</code> of type unsigned
+          short</dt>
+
+          <dd>
+            <p>If the <code>status</code> attribute is not
+            available it <em class=3D"rfc2119" title=3D"Keyword in RFC 2119=
+ context">MUST</em> raise an
+            exception. It <em class=3D"rfc2119" title=3D"Keyword in RFC 211=
+9 context">MUST</em> be available
+            when <code><a class=3D"term" href=3D"https://www.w3.org/TR/2006=
+/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> is 3
+            (Receiving) or 4 (Loaded). When available, it
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> represent the
+            HTTP status code (typically 200 for a successful
+            connection).</p>
+
+            <dl>
+              <dt>Exceptions on retrieval</dt>
+
+              <dd>
+                <table class=3D"idl-exceptions">
+                  <tbody><tr>
+                    <td>DOMException</td>
+
+                    <td>
+                      <table>
+                        <tbody><tr>
+                          <td>INVALID_STATE_ERR</td>
+
+                          <td><em class=3D"rfc2119" title=3D"Keyword in RFC=
+ 2119 context">SHOULD</em>
+                          be raised if this attribute is accessed
+                          when <code><a class=3D"term" href=3D"https://www.=
+w3.org/TR/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></=
+code>
+                          has an inappropriate value.</td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </dd>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-statustext"><code>statusText</code> of type
+          DOMString</dt>
+
+          <dd>
+            <p>If the <code>statusText</code> attribute is not
+            available it <em class=3D"rfc2119" title=3D"Keyword in RFC 2119=
+ context">MUST</em> raise an
+            exception. It <em class=3D"rfc2119" title=3D"Keyword in RFC 211=
+9 context">MUST</em> be available
+            when <code>readyState</code> is 3 (Receiving) or 4
+            (Loaded). When available, it <em class=3D"rfc2119" title=3D"Key=
+word in RFC 2119 context">MUST</em> represent the
+            HTTP status text sent by the server (appears after the
+            status code).</p>
+
+            <dl>
+              <dt>Exceptions on retrieval</dt>
+
+              <dd>
+                <table class=3D"idl-exceptions">
+                  <tbody><tr>
+                    <td>DOMException</td>
+
+                    <td>
+                      <table>
+                        <tbody><tr>
+                          <td>INVALID_STATE_ERR</td>
+
+                          <td><em class=3D"rfc2119" title=3D"Keyword in RFC=
+ 2119 context">SHOULD</em>
+                          be raised if this attribute is accessed
+                          when <code><a class=3D"term" href=3D"https://www.=
+w3.org/TR/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></=
+code>
+                          has an inappropriate value.</td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+
+      <div class=3D"section">
+        <h4 id=3D"idl-methods" class=3D"idl-header">Methods</h4>
+
+        <dl class=3D"idl-meth">
+          <dt id=3D"dfn-abort"><code>abort</code></dt>
+
+          <dd>
+            <p>When invoked, this method <em class=3D"rfc2119" title=3D"Key=
+word in RFC 2119 context">MUST</em> cancels any
+            network activity for which the object is responsible
+            and resets the object.</p>
+
+            <dl>
+              <dt>No Parameters</dt>
+
+              <dt>No Return Value</dt>
+
+              <dt>No Exceptions</dt>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-getallresponseheaders">
+          <code>getAllResponseHeaders</code></dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 3 (Receiving) or 4 (Loaded), it
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> return
+            <code>null</code>. Otherwise, it <em class=3D"rfc2119" title=3D=
+"Keyword in RFC 2119 context">MUST</em> return
+            all the HTTP headers, as a single string, with each
+            header line separated by a CR (U+000D) LF (U+000A)
+            pair. The status line <em class=3D"rfc2119" title=3D"Keyword in=
+ RFC 2119 context">MUST</em> not be
+            included.</p>
+
+            <div class=3D"boxed">
+              <div>
+                <span class=3D"exampleTitle">Example: Manipulating
+                response headers</span>
+              </div>
+              <pre class=3D"example" title=3D"Manipulating response headers=
+">// The following script:
+var r =3D new XMLHttpRequest();
+r.open('get', 'test.txt', false);
+r.send();
+alert(r.getAllResponseHeaders());
+
+// ...should display a dialog with text similar to the following:
+Date: Sun, 24 Oct 2004 04:58:38 GMT
+Server: Apache/1.3.31 (Unix)
+Keep-Alive: timeout=3D15, max=3D99
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/plain; charset=3Dutf-8
+</pre>
+            </div>
+
+            <dl>
+              <dt>No Parameters</dt>
+
+              <dt>Return Value</dt>
+
+              <dd>
+                <dl>
+                  <dd>
+                    <table>
+                      <tbody><tr>
+                        <td></td>
+
+                        <td>A single string consisting of all HTTP
+                        headers. See prose for details.</td>
+                      </tr>
+                    </tbody></table>
+                  </dd>
+                </dl>
+              </dd>
+
+              <dt>No Exceptions</dt>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-getresponseheader">
+          <code>getResponseHeader</code></dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 3 (Receiving) or 4 (Loaded), it
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> return the
+            empty string. Otherwise, it <em class=3D"rfc2119" title=3D"Keyw=
+ord in RFC 2119 context">MUST</em> represent the
+            value of the given HTTP header in the data received so
+            far for the last request sent, as a single string. If
+            more than one header of the given name was received,
+            then the values <em class=3D"rfc2119" title=3D"Keyword in RFC 2=
+119 context">MUST</em> be
+            concatenated, separated from each other by an U+002C
+            COMMA followed by an U+0020 SPACE. If no headers of
+            that name were received, then it <em class=3D"rfc2119" title=3D=
+"Keyword in RFC 2119 context">MUST</em> return
+            the empty string. Header names <em class=3D"rfc2119" title=3D"K=
+eyword in RFC 2119 context">MUST</em> be
+            compared case-insensitively to the method argument
+            (<var>header</var>).</p>
+
+            <div class=3D"boxed">
+              <div>
+                <span class=3D"exampleTitle">Example: Manipulating
+                response headers</span>
+              </div>
+              <pre class=3D"example" title=3D"Manipulating response headers=
+">// The following script:
+var r =3D new XMLHttpRequest();
+r.open('get', 'test.txt', false);
+r.send();
+alert(r.getAllResponseHeaders());
+
+// ...should display a dialog with text similar to the following:
+Date: Sun, 24 Oct 2004 04:58:38 GMT
+Server: Apache/1.3.31 (Unix)
+Keep-Alive: timeout=3D15, max=3D99
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/plain; charset=3Dutf-8
+</pre>
+            </div>
+
+            <dl>
+              <dt>Parameters</dt>
+
+              <dd class=3D"idl-params">
+                <dl>
+                  <dt><code>header</code> of type DOMString</dt>
+
+                  <dd>@XXX TDB@</dd>
+                </dl>
+              </dd>
+
+              <dt>Return Value</dt>
+
+              <dd>
+                <dl>
+                  <dd>
+                    <table>
+                      <tbody><tr>
+                        <td></td>
+
+                        <td>@XXX TBD@</td>
+                      </tr>
+                    </tbody></table>
+                  </dd>
+                </dl>
+              </dd>
+
+              <dt>No Exceptions</dt>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-open"><code>open</code></dt>
+
+          <dd>
+            <p>Calling this method <em class=3D"rfc2119" title=3D"Keyword i=
+n RFC 2119 context">MUST</em> initialise the
+            object by remembering the <var>method</var>,
+            <var>uri</var>, <var>async</var> (defaulting to
+            <code>true</code> if omitted), <var>user</var>
+            (defaulting to <code>null</code> if omitted), and
+            <var>password</var> (defaulting to <code>null</code> if
+            omitted) arguments, setting the <code>readyState</code>
+            attribute to 1 (Open), resetting the
+            <code>responseText</code>, <code>responseXML</code>,
+            <code>status</code>, and <code>statusText</code>
+            attributes to their initial values, and resetting the
+            list of request headers.</p>
+
+            <p>Same-origin security restrictions <em class=3D"rfc2119" titl=
+e=3D"Keyword in RFC 2119 context">SHOULD</em> apply.</p>
+
+            <p>If the URI given to this method contains a user name
+            and a password (the latter potentially being the empty
+            string), then these <em class=3D"rfc2119" title=3D"Keyword in R=
+FC 2119 context">MUST</em> be used if the
+            <var>user</var> and <var>password</var> arguments are
+            omitted. If the arguments are not omitted, they take
+            precedence, even if they are <code>null</code>.</p>
+
+            <p>If <code>open()</code> is called when
+            <code>readyState</code> is 4 (Loaded) the entire object
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be reset.</p>
+
+            <dl>
+              <dt>Parameters</dt>
+
+              <dd class=3D"idl-params">
+                <dl>
+                  <dt><code>method</code> of type DOMString</dt>
+
+                  <dd>
+                    A valid HTTP method name. The <code>GET</code>,
+                    <code>POST</code>, and <code>HEAD</code> values
+                    <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 cont=
+ext">MUST</em> be
+                    supported.
+
+                    <div class=3D"ednote">
+                      What about <code>PUT</code> and
+                      <code>DELETE</code>?
+                    </div>
+                  </dd>
+
+                  <dt><code>uri</code> of type DOMString</dt>
+
+                  <dd>
+                    A URI, which <em class=3D"rfc2119" title=3D"Keyword in =
+RFC 2119 context">MUST</em> be
+                    resolved to an absolute URI using the script's
+                    context <code>window.location.href</code> value
+                    as base if available.
+
+                    <div class=3D"ednote">
+                      This does not reflect what implementations
+                      do. <code>document.baseURI</code> might come
+                      closer. (<a href=3D"http://www.w3.org/2006/webapi/tra=
+ck/issues/29">
+                      ISSUE-29</a>)
+                    </div>
+                  </dd>
+
+                  <dt><code>async</code> of type boolean,
+                  optional</dt>
+
+                  <dd>@XXX TBD@</dd>
+
+                  <dt><code>user</code> of type DOMString,
+                  optional</dt>
+
+                  <dd>@XXX TBD@</dd>
+
+                  <dt><code>password</code> of type DOMString,
+                  optional</dt>
+
+                  <dd>@XXX TBD@</dd>
+                </dl>
+              </dd>
+
+              <dt>No Return Value</dt>
+
+              <dt>No Exceptions</dt>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-send"><code>send</code></dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 1 (Open), an exception <em class=3D"rfc2119" t=
+itle=3D"Keyword in RFC 2119 context">MUST</em>
+            be raised. Otherwise, the <code><a class=3D"term" href=3D"https=
+://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyStat=
+e</a></code> attribute
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be set to 2
+            (Sent) and a request to <var>uri</var> using method
+            <var>method</var>, authenticating using <var>user</var>
+            and <var>password</var> as appropriate is sent. If the
+            <var>async</var> flag is set to false, then the method
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> not return
+            until the request has completed. Otherwise, it
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> return
+            immediately. (See: <code><a class=3D"term" href=3D"https://www.=
+w3.org/TR/2006/WD-XMLHttpRequest-20060405/#dfn-open">open()</a></code>.)</p=
+>
+
+            <p>If the <var>method</var> is <code>POST</code> or
+            <code>PUT</code>, then the <var>data</var> passed to
+            the <code>send()</code> method <em class=3D"rfc2119" title=3D"K=
+eyword in RFC 2119 context">MUST</em> be used
+            for the entity body. If <var>data</var> is a string,
+            the data <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 con=
+text">MUST</em> be encoded as
+            UTF-8 for transmission. If the <var>data</var> is a
+            <code>Document</code>, then the document <em class=3D"rfc2119" =
+title=3D"Keyword in RFC 2119 context">MUST</em>
+            be serialised using the encoding given by
+            <code><var>data</var>.xmlEncoding</code>, if specified,
+            or UTF-8 otherwise [<cite><a href=3D"https://www.w3.org/TR/2006=
+/WD-XMLHttpRequest-20060405/#DOM3" class=3D"bibref">DOM3</a></cite>]. If <v=
+ar>data</var> is not a
+            <code>Document</code> or a <code>DOMString</code> the
+            host language <em class=3D"rfc2119" title=3D"Keyword in RFC 211=
+9 context">MUST</em> use the
+            stringification mechanisms on the argument that was
+            passed.</p>
+
+            <p>Implementations <em class=3D"rfc2119" title=3D"Keyword in RF=
+C 2119 context">SHOULD</em> support the
+            <code>send()</code> to be called without the
+            <var>data</var> argument to be passed.</p>
+
+            <p>If the response is an HTTP redirect (status code
+            301, 302, 303 or 307), then it <em class=3D"rfc2119" title=3D"K=
+eyword in RFC 2119 context">MUST</em> be
+            transparently followed (unless it violates security or
+            infinite loop precautions). Any other error (including
+            a 401) <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 conte=
+xt">MUST</em> cause the
+            object to use that error page as the response.</p>
+
+            <p>Immediately before processing the message body (if
+            any), the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be set to to 3
+            (Receiving). When the request has completed loading,
+            the <code><a class=3D"term" href=3D"https://www.w3.org/TR/2006/=
+WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> attribute
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be set to 4
+            (Loaded).</p>
+
+            <dl>
+              <dt>Parameters</dt>
+
+              <dd class=3D"idl-params">
+                <dl>
+                  <dt><code>data</code> of varying types (see
+                  IDL)</dt>
+
+                  <dd>@XXX TDB@</dd>
+                </dl>
+              </dd>
+
+              <dt>No Return Value</dt>
+
+              <dt>Exceptions</dt>
+
+              <dd>
+                <table>
+                  <tbody><tr>
+                    <td>DOMException</td>
+
+                    <td>
+                      <table>
+                        <tbody><tr>
+                          <td>INVALID_STATE_ERR</td>
+
+                          <td><em class=3D"rfc2119" title=3D"Keyword in RFC=
+ 2119 context">MUST</em>
+                          be raised if this method is called when
+                          <code><a class=3D"term" href=3D"https://www.w3.or=
+g/TR/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code>
+                          has an inappropriate value.</td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </dd>
+            </dl>
+          </dd>
+
+          <dt id=3D"dfn-setrequestheader">
+          <code>setRequestHeader</code></dt>
+
+          <dd>
+            <p>If the <code><a class=3D"term" href=3D"https://www.w3.org/TR=
+/2006/WD-XMLHttpRequest-20060405/#dfn-readystate">readyState</a></code> att=
+ribute has a
+            value other than 1 (Open), an exception <em class=3D"rfc2119" t=
+itle=3D"Keyword in RFC 2119 context">MUST</em>
+            be raised. If the <var>header</var> or <var>value</var>
+            arguments contain any U+000A LINE FEED or U+000D
+            CARRIAGE RETURN characters, or if the <var>header</var>
+            argument contains any U+0020 SPACE or U+003A COLON
+            charecters, nothing <em class=3D"rfc2119" title=3D"Keyword in R=
+FC 2119 context">MUST</em> be done.
+            Otherwise, the request header <var>header</var>
+            <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> be set to
+            <var>value</var>. If the request header
+            <var>header</var> had already been set, then the new
+            <var>value</var> <em class=3D"rfc2119" title=3D"Keyword in RFC =
+2119 context">MUST</em> be concatenated
+            to the existing value using a U+002C COMMA followed by
+            a U+0020 SPACE for separation.</p>
+
+            <div class=3D"boxed">
+              <div>
+                <span class=3D"exampleTitle">Example: Setting a
+                request header</span>
+              </div>
+              <pre class=3D"example" title=3D"Setting a request header">// =
+The following script:
+var r =3D new XMLHttpRequest();
+r.open('get', 'demo.cgi');
+r.setRequestHeader('X-Test', 'one');
+r.setRequestHeader('X-Test', 'two');
+r.send(null);
+
+// ...would result in the following header being sent:
+...
+X-Test: one, two
+...
+</pre>
+            </div>
+
+            <p>The list of request headers <em class=3D"rfc2119" title=3D"K=
+eyword in RFC 2119 context">MUST</em> be reset
+            when the <code><a class=3D"term" href=3D"https://www.w3.org/TR/=
+2006/WD-XMLHttpRequest-20060405/#dfn-open">open()</a></code> method is call=
+ed.</p>
+
+            <p>User agents <em class=3D"rfc2119" title=3D"Keyword in RFC 21=
+19 context">MUST</em> not set any
+            headers other than the headers set by the author using
+            this method, with the following exceptions:</p>
+
+            <ul>
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MUST</em> set the
+              <code>Host</code> header appropriately (see
+              <code><a class=3D"term" href=3D"https://www.w3.org/TR/2006/WD=
+-XMLHttpRequest-20060405/#dfn-open">open()</a></code>) and not allow it to =
+be
+              overridden.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MUST</em> set the
+              <code>Authorization</code> header according to the
+              values passed to the <code><a class=3D"term" href=3D"https://=
+www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/#dfn-open">open()</a></code> =
+method (but <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">MUS=
+T</em> allow calls
+              to <code><a class=3D"term" href=3D"https://www.w3.org/TR/2006=
+/WD-XMLHttpRequest-20060405/#dfn-setrequestheader">setRequestHeader()</a></=
+code>
+              to append values to it).</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MAY</em> set the
+              <code>Accept-Charset</code> and
+              <code>Accept-Encoding</code> headers and <em class=3D"rfc2119=
+" title=3D"Keyword in RFC 2119 context">MUST
+              NOT</em> allow them to be overridden.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MAY</em> set the
+              <code>If-Modified-Since</code>,
+              <code>If-None-Match</code>, <code>If-Range</code>,
+              and <code>Range</code> headers if the resource is
+              cached and has not expired (as allowed by HTTP), and
+              <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">M=
+UST NOT</em> allow
+              those headers to be overridden.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MUST</em> set the
+              <code>Connection</code> and <code>Keep-Alive</code>
+              headers as described by the HTTP specification, and
+              <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">M=
+UST NOT</em> allow
+              those headers to be overridden.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">SHOULD</em> set the
+              proxy-related headers according to proxy settings of
+              the environment, and <em class=3D"rfc2119" title=3D"Keyword i=
+n RFC 2119 context">MUST NOT</em> allow
+              those headers to be overridden.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">MAY</em> give the
+              <code>User-Agent</code> header an initial value, but
+              <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">M=
+UST</em> allow authors
+              to append values to it.</li>
+
+              <li>UAs <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 co=
+ntext">SHOULD</em> set
+              <code>Cookie</code> and <code>Cookie2</code> headers
+              appropriately for the given URI and given the user's
+              current cookies, and <em class=3D"rfc2119" title=3D"Keyword i=
+n RFC 2119 context">MUST</em> allow authors
+              to append values to these headers.</li>
+            </ul>
+
+            <p>In particular, UAs <em class=3D"rfc2119" title=3D"Keyword in=
+ RFC 2119 context">MUST NOT</em>
+            automatically set the <code>Cache-Control</code> or
+            <code>Pragma</code> headers to defeat caching
+            [<cite><a href=3D"https://www.w3.org/TR/2006/WD-XMLHttpRequest-=
+20060405/#RFC2616" class=3D"bibref">RFC2616</a></cite>].</p>
+
+            <dl>
+              <dt>Parameters</dt>
+
+              <dd class=3D"idl-params">
+                <dl>
+                  <dt><code>header</code> of type DOMString</dt>
+
+                  <dd>@XXX TDB@</dd>
+
+                  <dt><code>value</code> of type DOMString</dt>
+
+                  <dd>@XXX TDB@</dd>
+                </dl>
+              </dd>
+
+              <dt>No Return Value</dt>
+
+              <dt>Exceptions</dt>
+
+              <dd>
+                <table>
+                  <tbody><tr>
+                    <td>DOMException</td>
+
+                    <td>
+                      <table>
+                        <tbody><tr>
+                          <td>UNKNOWN_ERR</td>
+
+                          <td>@XXX TDB@</td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </dd>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <p>HTTP requests sent from multiple different <code><a href=3D"https://=
+www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/#xmlhttprequest">XMLHttpReque=
+st</a></code> objects in
+    succession <em class=3D"rfc2119" title=3D"Keyword in RFC 2119 context">=
+SHOULD</em> be pipelined into
+    shared HTTP connections.</p>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"bibref">A. References</h2>
+
+    <p><em>This section is normative</em></p>
+
+    <dl class=3D"bibliography">
+      <dt id=3D"DOM3">DOM3</dt>
+
+      <dd><cite><a href=3D"http://www.w3.org/TR/DOM-Level-3-Core/">Document=
+ Object
+      Model (DOM) Level 3 Core Specification</a></cite>,
+      <span class=3D"person">Arnaud Le Hors (IBM)</span>,
+      <span class=3D"person">Philippe Le H=C3=A9garet (W3C)</span>,
+      <span class=3D"person">Lauren Wood (SoftQuad, Inc.)</span>,
+      <span class=3D"person">Gavin Nicol (Inso EPS)</span>,
+      <span class=3D"person">Jonathan Robie (Texcel Research and
+      Software AG)</span>, <span class=3D"person">Mike Champion
+      (Arbortext and Software AG)</span>, and <span class=3D"person">Steve =
+Byrne (JavaSoft)</span>.</dd>
+
+      <dt id=3D"RFC2119">RFC2119</dt>
+
+      <dd><cite><a href=3D"http://www.ietf.org/rfc/rfc2119.txt">Key
+      words for use in RFCs to Indicate Requirement
+      Levels</a></cite>, <span class=3D"person">S.
+      Bradner</span>.</dd>
+
+      <dt id=3D"RFC2616">RFC2616</dt>
+
+      <dd><cite><a href=3D"http://www.ietf.org/rfc/rfc2616.txt">Hypertext T=
+ransfer
+      Protocol -- HTTP/1.1</a></cite>, <span class=3D"person">R.
+      Fielding (UC Irvine)</span>, <span class=3D"person">J. Gettys
+      (Compaq/W3C)</span>, <span class=3D"person">J. Mogul
+      (Compaq)</span>, <span class=3D"person">H. Frystyk
+      (W3C/MIT)</span>, <span class=3D"person">L. Masinter
+      (Xerox)</span>, <span class=3D"person">P. Leach
+      (Microsoft)</span>, and <span class=3D"person">T. Berners-Lee
+      (W3C/MIT)</span>.</dd>
+    </dl>
+  </div>
+
+  <div class=3D"section">
+    <h2 id=3D"authors">B. Authors</h2>
+
+    <p><em>This section is informative</em></p>
+
+    <p>The authors of this document are the members of the
+    <acronym title=3D"World Wide Web Consortium">W3C</acronym> Web
+    APIs Working Group.</p>
+
+    <ul>
+      <li>Robin Berjon, Expway (Working Group Chair)</li>
+
+      <li>Ian Davis, Talis Information Limited</li>
+
+      <li>Gorm Haug Eriksen, Opera Software</li>
+
+      <li>Marc Hadley, Sun Microsystems</li>
+
+      <li>Scott Hayman, Research In Motion</li>
+
+      <li>Ian Hickson, Google</li>
+
+      <li>Bj=C3=B6rn H=C3=B6hrmann, Invited Expert</li>
+
+      <li>Dean Jackson, <acronym title=3D"World Wide Web Consortium">W3C</a=
+cronym></li>
+
+      <li>Christophe Jolif, ILOG</li>
+
+      <li>Luca Mascaro, HTML Writers Guild</li>
+
+      <li>Charles McCathieNevile, Opera Software</li>
+
+      <li>T.V. Raman, Google</li>
+
+      <li>Arun Ranganathan, AOL</li>
+
+      <li>John Robinson, AOL</li>
+
+      <li>Doug Schepers, Vectoreal</li>
+
+      <li>Michael Shenfield, Research In Motion</li>
+
+      <li>Jonas Sicking, Mozilla Foundation</li>
+
+      <li>St=C3=A9phane Sire, IntuiLab</li>
+
+      <li>Maciej Stachowiak, Apple Computer</li>
+
+      <li>Anne van Kesteren, Opera Software</li>
+    </ul>
+
+    <p>Thanks to all those who have helped to improve this
+    specification by sending suggestions and corrections. (Please,
+    keep bugging us with your issues!)</p>
+  </div>
+
+
+</body></html>
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.w3.org/TR/2006/WD-XMLHttpRequest-20060405/respec-w3c.css
+
+@charset "utf-8";
+
+em.rfc2119 { text-transform: lowercase; font-variant: small-caps; font-styl=
+e: normal; }
+
+.boxed { background: rgb(238, 238, 238); color: black; border: 1px solid rg=
+b(153, 153, 153); max-width: 90%; margin: 2em 1em 1em 2em; }
+
+.boxed div { margin: 1.12em 0px; }
+
+.schemaTitle, .ebnfTitle, .idlTitle, .exampleTitle { margin: 1.5em 0.5em 1e=
+m 1em; font-weight: bold; font-style: italic; line-height: 120%; font-famil=
+y: sans-serif; background: rgb(242, 95, 0); color: white; border: 1px solid=
+ rgb(153, 153, 153); }
+
+.exampleTitle { background: rgb(0, 88, 159); }
+
+pre.schema, pre.ebnf, pre.idl, pre.example { margin: 1.5em 0.5em 1em 1em; }
+
+.bibliography dd { margin-bottom: 1em; }
+
+.bibliography ul { padding-top: 0px; margin-top: 0px; }
+
+.bibliography li { padding: 0.4em; }
+
+.bibliography li + li { border-top: 1px solid rgb(221, 221, 221); }
+
+@media screen {
+  .schemaTitle, .ebnfTitle, .idlTitle, .exampleTitle { position: relative; =
+padding: 0px 0.5em; top: -1.5em; }
+  pre.schema, pre.ebnf, pre.idl, pre.example { position: relative; top: -2e=
+m; padding: 0px; margin: 1.5em 0.5em -1em 1em; }
+}
+
+a.rngref { color: black; background: transparent; font-weight: bold; }
+
+dl.attrlist { margin-left: 2em; margin-top: 0px; }
+
+h4.attrlist { margin-bottom: 0px; }
+
+dd + dd { margin-top: 0.5em; }
+
+.ednote { border-left: 20px double rgb(242, 95, 0); padding-left: 1em; back=
+ground: rgb(238, 238, 238); margin-bottom: 2em; }
+
+.ednote::before { content: "Editorial Note "; color: rgb(242, 95, 0); font-=
+weight: bold; }
+
+table.features th { background: rgb(0, 88, 159); color: rgb(255, 255, 255);=
+ text-align: left; padding: 0.2em 0.2em 0.2em 0.5em; }
+
+table.features td { vertical-align: top; border-bottom: 1px solid rgb(204, =
+204, 204); padding: 0.3em 0.3em 0.3em 0.7em; }
+
+table.qa { border-collapse: collapse; margin: 1em auto; }
+
+table.qa, .qa tr, .qa th, .qa td { border: 1px solid black; }
+
+.qa th, .qa td { text-align: left; padding: 5px 1em; }
+
+.qa tr.legend th { text-align: center; background: rgb(0, 90, 156); color: =
+rgb(255, 255, 255); }
+
+.qa th { background: rgb(218, 218, 218); }
+
+.qa th a { text-decoration: none; color: black; }
+
+.qa tr.principle { font-weight: bold; background: rgb(250, 250, 250); }
+
+.qa tr.practice { font-weight: normal; }
+
+dl.idl-defs, dl.idl-attr, dl.idl-meth { margin-left: 2em; }
+
+.idl-defs dt code { color: black; background-color: rgb(221, 255, 210); }
+
+.idl-attr dt code { color: black; background-color: rgb(255, 255, 210); }
+
+.idl-meth dt code { color: black; background-color: rgb(217, 230, 248); }
+
+.idl-params dt code { color: black; background-color: rgb(254, 230, 248); }
+
+.idl-defs p:first-child, .idl-attr p:first-child, .idl-meth p:first-child {=
+ margin-top: 0px; }
+
+.idl-defs p:last-child, .idl-attr p:last-child, .idl-meth p:last-child { ma=
+rgin-bottom: 0px; }
+
+.idl-defs dt, .idl-defs dd, .idl-attr dt, .idl-attr dd, .idl-meth dt, .idl-=
+meth dd { margin-top: 0px; margin-bottom: 0px; }
+
+.idl-attr td, .idl-meth td { vertical-align: top; }
+
+dfn { font-weight: bold; font-style: normal; background-color: rgb(221, 255=
+, 210); }
+
+a.term { font-weight: bold; text-decoration: none; }
+
+.boxed div.specexample { margin: 1em; }
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.w3.org/StyleSheets/TR/W3C-WD
+
+@charset "utf-8";
+
+body { padding: 2em 1em 2em 70px; margin: 0px; font-family: sans-serif; col=
+or: black; background: left top no-repeat fixed white; }
+
+:link { color: rgb(0, 0, 204); background: transparent; }
+
+:visited { color: rgb(102, 0, 153); background: transparent; }
+
+a:active { color: rgb(204, 0, 0); background: transparent; }
+
+a:link img, a:visited img { border-style: none; }
+
+a img { color: white; }
+
+@media all {
+  a img { color: inherit; }
+}
+
+th, td { font-family: sans-serif; }
+
+h1, h2, h3, h4, h5, h6 { text-align: left; }
+
+h1, h2, h3 { color: rgb(0, 90, 156); background: white; }
+
+h1 { font-style: normal; font-variant: normal; font-weight: normal; font-st=
+retch: normal; font-size: 170%; line-height: normal; font-family: sans-seri=
+f; }
+
+h2 { font-style: normal; font-variant: normal; font-weight: normal; font-st=
+retch: normal; font-size: 140%; line-height: normal; font-family: sans-seri=
+f; }
+
+h3 { font-style: normal; font-variant: normal; font-weight: normal; font-st=
+retch: normal; font-size: 120%; line-height: normal; font-family: sans-seri=
+f; }
+
+h4 { font-style: normal; font-variant: normal; font-weight: bold; font-stre=
+tch: normal; font-size: 100%; line-height: normal; font-family: sans-serif;=
+ }
+
+h5 { font-style: italic; font-variant: normal; font-weight: normal; font-st=
+retch: normal; font-size: 100%; line-height: normal; font-family: sans-seri=
+f; }
+
+h6 { font-style: normal; font-variant: small-caps; font-weight: normal; fon=
+t-stretch: normal; font-size: 100%; line-height: normal; font-family: sans-=
+serif; }
+
+.hide { display: none; }
+
+div.head { margin-bottom: 1em; }
+
+div.head h1 { margin-top: 2em; clear: both; }
+
+div.head table { margin-left: 2em; margin-top: 2em; }
+
+p.copyright { font-size: small; }
+
+p.copyright small { font-size: small; }
+
+@media screen {
+  a[href]:hover { background: rgb(255, 255, 170); }
+}
+
+pre { margin-left: 2em; }
+
+dt, dd { margin-top: 0px; margin-bottom: 0px; }
+
+dt { font-weight: bold; }
+
+ul.toc, ol.toc { list-style: none; }
+
+@media speech {
+  h1, h2, h3 { }
+  .hide { speak: none; }
+  p.copyright { }
+  dt { }
+}
+
+body { background-image: url("//www.w3.org/StyleSheets/TR/logo-WD"); }
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www.w3.org/StyleSheets/TR/logo-WD
+
+iVBORw0KGgoAAAANSUhEUgAAABoAAAF9CAMAAAAtEoiqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
+U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABCUExURQBanA9koh9uqC94rj+DtECDtU+N
+ul+XwW+ix3+szYCtzo+205/B2a/L4L/V5sDW58/g7NDh7d/q8uDr8+/0+P///37eBmEAAANnSURB
+VGje7ZjZrt02DEWpoZZZS4zqaP//r+bBwxU1HBQtUjSB/HSBdWmRm4PoQ3/S5PmDFlpooV8SBbZE
+RCy+QwJPRLQhzpCHNMjzicjMfHZWJuN+iquR9Y5Mvqx2qzxkMJEvfuA8Q143GuSBnG43mHVcAdXD
+2kPzOt9aEREd4q5/MjN5TftCIqLjPks6xBM3iEjAVAI5jJJCFIUoj5KykUc6BmcFZEMyPIsiezKH
+BBp4GGdlI/ebhsjOkCvTF4aEPFFe5kIF5lm+5jVvAssRzADt5apP7tABQESAV5IHeSBZIjIR2DXK
+SI/GKApZvCKZorPskb9So0N+2u1tjZ+Kpp3yARlfP/b/OvScV3811btvl/Y4XYMKkA05ICO1iDMO
+YgTK6LrSIJPA0AFbowhHBFiAiOGaht0SAMC1LzQZQA4QnLFxg8zOu7mcL26ihg+2EWpLIiJyj4Aa
+bZ9mVJxlWc6p8qmYfzAc5JMbUzQrADdFG2T2wjBH5KqYXD9FzTNne+ezHbT5JRSKI4rNXXklOaFs
+L2lCjl/3a6fG8UXeQfQM0JzaKfqhzV+ryey1cXoFpGrkjJeKEYpzZFL2/0nZ3KF5b4bICgBEM/Aw
+A5KfFUChHdkS+YIwUyMMty8ab1/v5bvdN4/WMF3O7H2+Ck4+Ck612/i0EZErAHC6dsU62ZIJzFuj
+hjkKgLSNNQyCy3SkodWmjfIhAzj3AfIRAGJXh2Y/1WkvugxqH5/CPhv3dDvs49pwBcCzQLVnBQFQ
+DjusqCti2cbFpsRq1PAyrt475r2rQyVSnS9t0IYc/TBkrw1+7pXtmd99L7Qr1otQzGTFolP3V6hW
+rAOH/qw4quaU7mPkEbNFsdqjFNqeza9amh/ny/tGD+g5z0+x+dLNjQxk9nsCim2QSfdYy4MrwMcT
+pSrTf5mvXSQ6EwvK0RRbAoByfe5l3SmAsABgv0MnhXESmYJIRIceX1dSLvW4VT5VAy7qs95dw4wG
+LOnaeqzYzEL2fTe8xZa7HqrWg1iaRlIfI9pUe6hMNXr6tt+j9HD7qo3rpH72mtjPr2oCHHamRjsp
+37Mut9UdUP0O0Pqh4tJitZfvdcfOrJ4D/8ZZcw8/xOWba63W0K5flhZaaKGFFlpooYUWWmihhRZa
+aKGFFvrt0Pdvk+evHxCpWGl3IC2kAAAAAElFTkSuQmCC
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: http://www.w3.org/Icons/w3c_home
+
+iVBORw0KGgoAAAANSUhEUgAAAEgAAAAwCAMAAACFQszZAAADAFBMVEUAAAABAQECAgIFBQUGBgYI
+CAgMDAwODg4SEhIUFBQVFRUYGBgaGhodHR0fHx8gICAmJiYoKCgsLCwxMTE1NTU2NjY3Nzc4ODg7
+Ozs/Pz9ERERFRUVGRkZJSUlOTk5PT09WVlZdXV1eXl5gYGBhYWFkZGRnZ2dsbGxtbW1vb29wcHBx
+cXF0dHR8fHwAWpwBW5wCW50DXJ0EXZ4FXZ4GXp4IX58JYJ8LYaAMYqEOY6EPZKISZqMTZqMUZ6QW
+aKUYaqUaa6Yba6Yebagfbqggb6ghb6kjcaokcaoodKwtd60yeq80fLA1fLE3frE4frI5f7I6gLM8
+gbNBhLVChbZEhrZHiLhJibhKirlLi7lOjLpRjrtVkb1ZlL9alL9blb9dlsBfl8FimcJnncRpnsVq
+n8Vrn8ZsoMZtocZuocdvosdxo8hzpMl1psl3p8p4qMt6qct8qsx9q81+rM2BgYGEhISJiYmKioqM
+jIyNjY2Pj4+RkZGSkpKWlpaXl5eYmJiampqdnZ2fn5+goKChoaGioqKlpaWmpqaoqKiqqqqrq6us
+rKytra2vr6+xsbGysrKzs7O0tLS3t7e5ubm8vLy/v7+Crs6Dr8+FsNCGsdCHsdCIstGLtNKMtdKW
+u9aXvNeYvNeZvdebvtigwtqkxNylxdyox92qyN6vy+CwzOCxzeGyzeG0zuK30OO70+W81OW+1ebB
+wcHCwsLDw8PFxcXGxsbHx8fNzc3Ozs7Pz8/T09PY2NjZ2dnb29vc3Nzd3d3f39/A1ufB1+fD2OjF
+2ejH2+nI2+rK3erL3evM3uvN3uvO3+vN3+zR4e3S4u7T4+7U4+7V5O/X5e/Y5e/Z5vDa5vDb6PHc
+6PHg4ODh4eHk5OTn5+fp6enr6+vt7e3u7u7h7PPi7PTk7vXn7/bp8fbq8ffr8vft8/ju9Pjw8PDy
+8vL09PT19fX39/fw9fnz9/r0+Pv2+fz3+vz5+fn7+/v4+vz5+/36/P37/P38/Pz9/f38/f79/v7+
+/v7+/v/////MzMyRmidfAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAAASAAAAEgARslrPgAABClJREFU
+SMftlwlUlFUUxx9UQ2JpViRkiJW08zEwhAZBhQZMKAa2TBFFIbRQZBISGNECibZHVChTZkQREUbR
+BrTQoqMg0b4QhBiyCBEUEgzveO973+P7ZhgGzsFz6py858D3f/e773e++9679wE5hhwScyFmldFp
+GJnO5MOgfxP07U6TqV121JlMpl7lfTsMTTsU67Wa3wk/5pomGRQnSVKy/CYatFEJTJYsrZZ5B9Ld
+XM75EdUZlFal5T2a1s1AxRChl2cWgjYoIL0V6HN0dpyIh1nzCKXvOjTTtA3nLqxYx0A9Oghp4TMb
+Qfr3CU6LFSdiBJxDrrwsjnyLepCKnx/POdOzOp2MyycUdKkAGWEQcAWzpSC92QdliAKbtc2BPNSV
+nfOEx4AMUudzG+h4ATLAYBNTf4WBvB5VvzMhDvOysk9zJBri9CvNeKbm7dyNZFw+5aBDZE6fPwy+
+Z7IA1OJWVNmEHLUexTtATIGVfyAz82lxjlT5fIVrUc91KchwpvZcAPI5Jj0IyeWvP9DM6LQ6kLcq
++WCaUgHX8SCTqDghl/7Jtl5DThezs+6hViBVPrjwUhTXISDLUWz3BvUq81UTx2oxe2i/NWgwQOTD
+joLkww56Pe7ZIIjRSFAreehTxH3CEgGLEfkU8wNTJBY4BsXLIHx388gccq890FaRTxwHxaKOArEV
+nr2XgLhRjryPVNkDtWl5PsMXwj6FS1LgMBSsjyRp2+DlakRrr+Zbud7pH3sgupznU4v7lMSrswge
+kfjufP6Vui04yDuO2gXl83yw2j8p590gVqybqDRvzPPDk+yDdkksHz3+xj3U0+FAsZNlZSX54Uha
+BJVtnm8fNHox5tPCv+s67Aa1qlqh9MDtSLoJVIp9EDvFyUa+Urg6xmR19YJdg9UGBfn+JCCsKz1U
+u66d75dBr+4nYF/iJ70Bx3kSEKt0P0mKlk+Qn0WHQwsCz/N0AlPdIga+NYWoN3NtsIhdAZ6EKYCM
+fHIj6kaujRaxV4HnhimAeH8O44NQdm5+s4i9HFyJv1jONw+MB/Ebg7cfegvqyywnXQSuNU92Wfge
+fM8GiN1h5Vy/ifou/M479X9wVwO6XmvyUnN+Ovp+G6Ba0X6o3KC+oPQVOAjPclcC9pLfqedjyoxu
+N3KWDdBIsNx+0KBBBcMl1uoLXeF1dHyGHe9aSj92zhMxXacQ8rANEPaiIqGhQcXhcxX2y5s//e4l
+/EQt3mupR9zdz0IqjydkvtkWqFhusWh7faRifO5borpoE9EzdDI59ryc3LVzHQiZ3UxtgXp0Ucog
+StfDnnVBY5wr/2aeDldx1c75iNoE0egCRRdEy+KbZRyjTRAF0322I+O4N9MJQC98reiGF8c2oSQu
+InzlHQ2qwB9ST13gVame+h/90+//AjLbsimAZh6af7NOOAhIdkqdYiybxQAAAABJRU5ErkJggg==
+------MultipartBoundary--JsCqKeIXgRUeWKU1M5FurHqG3hrsedpFC4215qJ2ZC------

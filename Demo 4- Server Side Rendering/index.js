@@ -1,28 +1,46 @@
+var hea='<!DOCTYPE html><html><head>  <meta charset="utf-8">  <meta http-equiv="X-UA-Compatible" content="IE=edge">  <title>Polling</title>  <link rel="stylesheet" href="styles.css">  <script src="script.js"></script></head><body>  <div class="header">    <div class="hitem" id="long"><p>Long</p></div><div class="hitem" id="short"><p>Short</p></div>  </div>  <center>    <div id="page_container">';
+var tai='   </div></center></body></html>';
+var stp='<div class="frmcont">  <div class="diagramcont">    <div class="empty" id="white1"></div></div>  <div class="tempcont">    <p class="tempreading" id="temp1">100</p><p> Deg</p></div>\n</div>';
+var ltp='<div class="frmcont"> <div class="diagramcont">    <div class="empty" id="white2"></div>  </div>  <div class="tempcont">    <p class="tempreading" id="temp2">100</p>    <p> Deg</p>  </div></div>';
+
+
 var express = require('express')
   , http = require('http')
   , path = require('path')
   , bodyParser = require('body-parser')
   , app = express()
+  , fileUpload = require('express-fileupload')
   , morgan = require('morgan');
+
+  var counter=0;
 
   app.set('port', 3000);
   app.use(morgan(':method :url Status :status :req[body] - :response-time ms'));
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  app.use(fileUpload());
   app.use(express.static(path.join(__dirname, 'public')));
+  var browserSync = require('browser-sync');
+  var bs = browserSync.create().init({ logSnippet: false });
+  app.use(require('connect-browser-sync')(bs));
 
-
-app.get('/sample-get',function(req,res){
-    res.send(Math.random().toString());
+app.get('/spoll',function(req,res){
+    res.send((Math.floor(Math.random()*200)+1).toString());
 });
 
-app.post('/sample-post', function(req, res) {
-    var fname = req.body.fname,
-        lname = req.body.lname,
-        age = req.body.age;
-        console.log("Post received: ",res.body);
-        res.send("Hi "+fname+" "+lname+"\n"+"Thanks for signing up.");
+app.get('/lpoll',function(req,res){
+    setTimeout(function(){
+      res.send((Math.floor(Math.random()*200)+1).toString());
+    },Math.floor(Math.random()*10)*1000);
+});
+
+app.get('/short_term_polling.html',function(req,res){
+      res.send(hea+stp+tai);
+});
+
+app.get('/long_term_polling.html',function(req,res){
+      res.send(hea+ltp+tai);
 });
 
 http.createServer(app).listen(app.get('port'), function(){

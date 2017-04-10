@@ -86,6 +86,14 @@ window.onload=function(){
 	document.getElementById('long').onclick=function(){
 		fetch_page("long");
 	};
+	
+	document.getElementById('ashort').onclick=function(){
+		return false;
+	};
+	document.getElementById('along').onclick=function(){
+		return false;
+	};
+	
 	if(window.location.pathname=='/long_term_polling.html'){
 		for(var i = 0; i < timer.length; i++) {
     		clearTimeout(timer[i]);

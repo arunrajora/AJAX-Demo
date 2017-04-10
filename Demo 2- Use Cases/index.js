@@ -3,6 +3,7 @@ var express = require('express')
   , path = require('path')
   , bodyParser = require('body-parser')
   , app = express()
+  , fileUpload = require('express-fileupload')
   , morgan = require('morgan');
 
   app.set('port', 3000);
@@ -10,6 +11,7 @@ var express = require('express')
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  app.use(fileUpload());
   app.use(express.static(path.join(__dirname, 'public')));
   var browserSync = require('browser-sync');
   var bs = browserSync.create().init({ logSnippet: false });
@@ -27,6 +29,11 @@ app.get('/getsubmit',function(req,res){
 app.post('/postsubmit',function(req,res){
     console.log("POST",req.body);
     res.send(req.body);
+});
+
+app.post('/filesubmit',function(req,res){
+    console.log("POST",req.files.afile);
+    res.send(req.files.afile.name);
 });
 
 http.createServer(app).listen(app.get('port'), function(){

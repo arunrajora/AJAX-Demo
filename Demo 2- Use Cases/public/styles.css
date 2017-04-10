@@ -9,42 +9,69 @@ body{
 	background-color: rgba(255, 255, 255, 0.7);
 }
 
-.container{
-	max-width: 300px;
-	height: 300px;
-	margin: 0 auto;
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
-	text-align: center;
+.header{
 	display: flex;
-	flex-direction: column;
+	width: 100vw;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	user-select: none;
 }
-
-.number_holder{
+.hitem{
+	min-width: 80px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 10px;
+	color: #4CAF50;	
 	cursor: pointer;
-	max-width: 300px;
-	height: 200px;
-	line-height: 200px;
+	position: relative;
+}
+.hitem:hover{
+	transform: scale3d(1.1, 1.1, 1.1);
+	transition: .3s all linear;
+}
+#page_container{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-top: 100px;
+	max-width: 500px;
+	min-height: 300px;
+	padding: 30px;
+	color: white;
+	font-size: 30px;
+	width:calc(100vw-100px);
 	background-color: #4CAF50;
-	font-size: 80px;
-    color: white;
+	
 }
 
-.regen_btn{
-	cursor: pointer;
-	line-height: 100px;
-	text-align: center;
-	font-size: 20px;
-	height: 100px;
+.frmcont{
+	position: relative;
+	padding-top: 50px;
 }
 
-.regen_btn:hover{
+input[type=number],input[type=text]{
+	padding: 10px;
+	border: 2px solid #fff;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	max-width: 200px;
+	margin-bottom: 50px;
+}
+
+input[type=number]:focus,input[type=text]:focus {
+    border-color:#333;
+}
+
+.lbl {
+	margin-left: 30px;
+}
+
+
+input[type=submit] {
+
+	margin-top:30px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.number_holder:hover{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding:5px 15px; 
+    background:white; 
+    font-size: 20px;
+    border:0 none;
+    cursor:pointer; 
 }

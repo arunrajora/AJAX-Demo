@@ -1,46 +1,83 @@
 window.onload=function(){
-	function fetch_random_number(){
+
+	function submitget(){
 		var xhr;
-		//STEP 1:
 		if(window.XMLHttpRequest){
 			xhr=new XMLHttpRequest();
 		}
 		else{
 			xhr=new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		console.log(xhr);
-		
-		//STEP 2:
-		//OPEN : method, url, async
-		xhr.open("GET","/randomnumber",true);
-
-		//STEP 3:
-		//setRequestHeader: header, value
-		xhr.setRequestHeader("authentication","123456");
-
-		//STEP 4:
+		var name=document.getElementById("name").value;
+		var age=document.getElementById("age").value;
+		xhr.open("GET","/getsubmit?name="+name+"&age="+age.toString(),true);
 		xhr.onreadystatechange=function(){
-			//ready state: 0 -request not initialized
-			//1 server connection established
-			//2 request received
-			//3 processing request
-			//4 request finished and response is ready
-
-
-			console.log(this.readyState,this.status,this.statusText);
-			if(this.readyState==4 && this.status==200){
-				document.getElementById("number_holder").innerHTML=this.responseText;
-
-				console.log(this.getAllResponseHeaders());
-				//this.getresponseHeader("header-name")
+		if(this.readyState==4 && this.status==200){
+				alert(this.responseText);
 			}
 		}
-
-
-		//STEP 5:
 		xhr.send();
 	}
-	document.getElementById('regen_btn').onclick=function(){
-		fetch_random_number()
+
+	function submitpost(){
+		var xhr;
+		if(window.XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}
+		else{
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		var name=document.getElementById("name").value;
+		var age=document.getElementById("age").value;
+		var params="name="+name+"&age="+age.toString();
+		xhr.open("POST","/postsubmit",true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.setRequestHeader("Content-length", params.length);
+		xhr.onreadystatechange=function(){
+		if(this.readyState==4 && this.status==200){
+				alert(this.responseText);
+			}
+		}
+		xhr.send(params);	
+	}
+
+	function fetch_page(page_name){
+		var xhr;
+		if(window.XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}
+		else{
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xhr.open("GET","/"+page_name+".html",true);
+		xhr.onreadystatechange=function(){
+		if(this.readyState==4 && this.status==200){
+				console.log(this.responseText);
+				document.getElementById('page_container').innerHTML=this.responseText;
+					if(page_name=="get"){						
+						document.getElementById('getform').onsubmit = function() {
+    						submitget();
+    						return false;
+						};
+					}
+					else if(page_name=="post"){
+						document.getElementById('postform').onsubmit = function() {
+    						submitpost();
+    						return false;
+						};
+					}
+
+			}
+		}
+		xhr.send();
+	}
+	document.getElementById('get').onclick=function(){
+		fetch_page("get");
+	};
+	document.getElementById('post').onclick=function(){
+		fetch_page("post");
+	};
+	document.getElementById('file').onclick=function(){
+		fetch_page("file");
 	};
 };

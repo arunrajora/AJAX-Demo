@@ -11,10 +11,22 @@ var express = require('express')
     extended: true
   }));
   app.use(express.static(path.join(__dirname, 'public')));
-
+  var browserSync = require('browser-sync');
+  var bs = browserSync.create().init({ logSnippet: false });
+  app.use(require('connect-browser-sync')(bs));
 
 app.get('/randomnumber',function(req,res){
     res.send((Math.floor(Math.random()*10)+1).toString());
+});
+
+app.get('/getsubmit',function(req,res){
+    console.log("GET",req.query);
+    res.send(req.query);
+});
+
+app.post('/postsubmit',function(req,res){
+    console.log("POST",req.body);
+    res.send(req.body);
 });
 
 http.createServer(app).listen(app.get('port'), function(){

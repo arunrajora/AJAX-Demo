@@ -87,9 +87,17 @@ window.onload=function(){
 		fetch_page("long");
 	};
 	if(window.location.pathname=='/long_term_polling.html'){
+		for(var i = 0; i < timer.length; i++) {
+    		clearTimeout(timer[i]);
+    		timer.shift();
+		}
 		start_long_poll();
 	}
 	else if(window.location.pathname=='/short_term_polling.html'){
+		for(var i = 0; i < timer.length; i++) {
+    		clearTimeout(timer[i]);
+    		timer.shift();
+		}
 		start_short_poll();
 	}
 };

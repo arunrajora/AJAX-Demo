@@ -13,16 +13,8 @@ var express = require('express')
   app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/sample-get',function(req,res){
-    res.send(Math.random().toString());
-});
-
-app.post('/sample-post', function(req, res) {
-    var fname = req.body.fname,
-        lname = req.body.lname,
-        age = req.body.age;
-        console.log("Post received: ",res.body);
-        res.send("Hi "+fname+" "+lname+"\n"+"Thanks for signing up.");
+app.get('/randomnumber',function(req,res){
+    res.send((Math.floor(Math.random()*10)+1).toString());
 });
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -1,5 +1,15 @@
 window.onload=function(){
 
+
+	function logRequest(){
+		var xhr;
+		if(window.XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}
+		xhr.open("GET","/log",true);
+		xhr.send();
+	}
+
 	function submitget(){
 		var xhr;
 		if(window.XMLHttpRequest){
@@ -58,6 +68,7 @@ window.onload=function(){
 	}
 
 	function fetch_page(page_name){
+		logRequest();
 		var xhr;
 		if(window.XMLHttpRequest){
 			xhr=new XMLHttpRequest();

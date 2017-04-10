@@ -6,6 +6,8 @@ var express = require('express')
   , fileUpload = require('express-fileupload')
   , morgan = require('morgan');
 
+  var counter=0;
+
   app.set('port', 3000);
   app.use(morgan(':method :url Status :status :req[body] - :response-time ms'));
   app.use(bodyParser.urlencoded({
@@ -34,6 +36,12 @@ app.post('/postsubmit',function(req,res){
 app.post('/filesubmit',function(req,res){
     console.log("POST",req.files.afile);
     res.send(req.files.afile.name);
+});
+
+app.get('/log',function(req,res){
+  counter+=1;
+  console.log(counter.toString());
+  res.send("done");
 });
 
 http.createServer(app).listen(app.get('port'), function(){

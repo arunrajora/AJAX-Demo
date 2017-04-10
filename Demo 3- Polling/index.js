@@ -3,26 +3,30 @@ var express = require('express')
   , path = require('path')
   , bodyParser = require('body-parser')
   , app = express()
+  , fileUpload = require('express-fileupload')
   , morgan = require('morgan');
+
+  var counter=0;
 
   app.set('port', 3000);
   app.use(morgan(':method :url Status :status :req[body] - :response-time ms'));
   app.use(bodyParser.urlencoded({
     extended: true
   }));
+  app.use(fileUpload());
   app.use(express.static(path.join(__dirname, 'public')));
+  var browserSync = require('browser-sync');
+  var bs = browserSync.create().init({ logSnippet: false });
+  app.use(require('connect-browser-sync')(bs));
 
-
-app.get('/sample-get',function(req,res){
-    res.send(Math.random().toString());
+app.get('/spoll',function(req,res){
+    res.send((Math.floor(Math.random()*200)+1).toString());
 });
 
-app.post('/sample-post', function(req, res) {
-    var fname = req.body.fname,
-        lname = req.body.lname,
-        age = req.body.age;
-        console.log("Post received: ",res.body);
-        res.send("Hi "+fname+" "+lname+"\n"+"Thanks for signing up.");
+app.get('/lpoll',function(req,res){
+    setTimeout(function(){
+      res.send((Math.floor(Math.random()*200)+1).toString());
+    },Math.floor(Math.random()*10)*1000);
 });
 
 http.createServer(app).listen(app.get('port'), function(){
